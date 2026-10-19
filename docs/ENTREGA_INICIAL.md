@@ -59,3 +59,11 @@ La nueva UI selecciona inicio y fin en una cadena continua del mapa, resalta su 
 Validación final local sobre esta implementación: `npm run build && CHECK_BUILT_PRESENTATION=1 npm test`: **64 PASS, 0 FAIL, 0 omitidas**; `python -m unittest discover -s tests -p 'test_*.py'`: **23 PASS**. Revisión independiente de selección/buffer/perfiles: 23 controles PASS y comparación de dos ejes reales contra Python AEQD, registrada con WARN de no equivalencia exacta en REVISION_SELECCION.md. Revisión de presentación: 8 contratos PASS. Estos conteos se solapan y no se suman como pruebas independientes.
 
 Verificación de interacción visual/móvil en navegador: **NOT_RUN**; no se la presenta como realizada. Publicación de esta actualización: pendiente de comprobación remota al momento de este registro; el resultado se añadirá luego de integrar y consultar producción.
+
+### Comprobación remota de la actualización
+
+PR3 integrada como `f306298296f3625ed26e174f3e53225df558590d`, con estado Vercel success para la rama revisada y para la integración. Producción `https://tren-minero.vercel.app` comprobada: HTTP200, título LAUGIS, asset `/assets/index-DZH6qnOp.js` igual al build local, tres propuestas y manifiesto sólo de presentación, propiedades de ejes depuradas, corredor analítico completo HTTP404 y sin controles internos/exportaciones en el bundle. `/api/dem` devolvió HTTP206, Content-Range `bytes 0-15/38176492` y exactamente 16 bytes para una tesela Copernicus.
+
+Smoke de consulta WFS real ejecutado a las 15:22:44 UTC del 19/10/2026: bbox acotado en San Rafael y buffer de un recorte azul de 2.000 m; una candidata, una NC intersectada y un contorno disponible. Corredor interactivo 43,13654294 ha; intersección 46.177,040016 m². El servidor respondió además Access-Control-Allow-Origin `*` ante Origin de producción. Es una comprobación CLI de consulta y cruce, no del navegador ni de cobertura integral. No se guardó la respuesta parcelaria ni datos nominales en el repositorio.
+
+El repositorio continúa público; la conexión disponible no ofrece la operación para cambiar su visibilidad. No se da por realizada privacidad a nivel de repositorio. Navegador/celular: NOT_RUN.

@@ -21,7 +21,7 @@ npm run build
 
 El mapa y el WFS funcionan en Vite. Los perfiles usan `/api/dem` (función Node de Vercel que lee bloques del COG público); para probar esa ruta localmente usar `vercel dev` con la conexión propia del desarrollador. Un `vite dev` solo no sirve las funciones `/api`.
 
-Proyecto Vercel de infraestructura existente: https://vercel.com/idecam/tren-minero; ese slug no atribuye pertenencia institucional al proyecto personal. `vercel.json` define Vite y `dist`. Visor publicado: https://tren-minero.vercel.app. GitHub/Vercel informó Ready para el commit de integración `3336452`; se comprobó HTTP200, título y manifiesto correctos para esa versión anterior a esta actualización de identidad. La conexión directa Vercel devuelve403, pero el despliegue Git funciona. La nueva presentación LAUGIS requiere su propia verificación al desplegarse; la verificación visual e interacción en navegador siguen pendientes.
+Visor publicado: https://tren-minero.vercel.app. Actualización LAUGIS integrada por PR3 (`f306298`): Vercel/GitHub informó success y se comprobó HTTP200, título LAUGIS, asset del build esperado, manifiesto depurado, ausencia del corredor analítico completo (404) y lectura DEM parcial HTTP206. La conexión directa Vercel devuelve403, pero el despliegue Git funciona. Estas comprobaciones HTTP no equivalen a una revisión visual; interacción real en navegador y celular sigue pendiente.
 
 ## Funciones
 
@@ -86,4 +86,4 @@ Los agentes son funciones de apoyo activadas por tarea, no profesionales acredit
 
 ## Estado y límites
 
-Ver [registro de entrega](docs/ENTREGA_INICIAL.md) para comandos, pruebas reales, revisiones y pendientes. Build y pruebas de código no equivalen a validación ferroviaria, registral o topográfica. Siguen pendientes la cobertura catastral integral, el detalle de la naranja, conexiones faltantes, verificación de infraestructura, demanda logística, condicionantes y costos documentados, revisión visual en navegador y verificación de despliegue de esta actualización de identidad/presentación.
+Ver [registro de entrega](docs/ENTREGA_INICIAL.md) para comandos, pruebas reales, revisiones y pendientes. Build y pruebas de código no equivalen a validación ferroviaria, registral o topográfica. Siguen pendientes la cobertura catastral integral, el detalle de la naranja, conexiones faltantes, verificación de infraestructura, demanda logística, condicionantes y costos documentados y revisión visual en navegador/celular.
