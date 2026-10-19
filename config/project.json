@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "project_id": "tren-minero",
+  "title": "Tren Minero · Evaluación territorial de alternativas",
+  "director": "Ing. Agrim. LAUTARO DARIO MARTINEZ",
+  "stage": "preliminary",
+  "repository": "https://github.com/inglautaromartinez-hue/tren-minero",
+  "vercel_project": "https://vercel.com/idecam/tren-minero",
+  "governance": {
+    "instructions": "AGENTS.md",
+    "team_and_gates": "docs/EQUIPO_Y_CONTROLES.md",
+    "work_plan": "docs/PLAN_DE_TRABAJO.md",
+    "decisions": "docs/REGISTRO_DECISIONES.md",
+    "execution_model": "task_scoped_ai_roles",
+    "persistent_agent_service": false,
+    "independent_review_required_for_method_changes": true,
+    "single_editor_per_file": true,
+    "roles": [
+      "PM",
+      "INV",
+      "TOPO",
+      "CAT",
+      "FER",
+      "MIN",
+      "LOG",
+      "PRED",
+      "GEO",
+      "HID",
+      "ECO",
+      "DEV",
+      "UX",
+      "QA"
+    ],
+    "evidence_classes": [
+      "measured",
+      "documented",
+      "testimonial",
+      "estimated",
+      "assumed"
+    ],
+    "control_results": [
+      "PASS",
+      "WARN",
+      "BLOCKED",
+      "NOT_RUN"
+    ]
+  },
+  "analysis": {
+    "buffer_each_side_m": 100,
+    "buffer_end_cap": "round",
+    "dissolve_within_alternative": true,
+    "length_method": "WGS84 geodesic",
+    "initial_buffer_crs": "+proj=aeqd +lat_0=-35.5 +lon_0=-67.5 +datum=WGS84 +units=m +no_defs +type=crs",
+    "crs_status": "sampled_distortion_documented_0.0371_percent",
+    "corridor_area_is_parcel_affected_area": false,
+    "corridor_is_expropriation": false,
+    "automatic_gap_closure": false,
+    "automatic_optimum_ranking": false,
+    "missing_numeric_value": null,
+    "longitudinal_grade_unit": "permille",
+    "terrain_profile_is_design_grade": false,
+    "authoritative_metrics_manifest": "public/data/manifest.json",
+    "area_method": "WGS84 ellipsoidal area of dissolved corridor with boundary densification",
+    "area_boundary_densification_max_m": 500,
+    "buffer_scale_max_sampled": 1.000371,
+    "buffer_distortion_max_sampled_percent": 0.0371,
+    "distortion_is_certified_bound": false,
+    "gis_review": "docs/REVISION_GIS.md",
+    "data_gate_control_result": "WARN"
+  },
+  "privacy": {
+    "publish_holder_names_by_default": false,
+    "parcel_identifiers_are_strings": true,
+    "commit_raw_parcel_dataset": false,
+    "commit_dem_mosaics": false,
+    "commit_secrets": false
+  },
+  "alternatives": [
+    {
+      "id": "T1",
+      "color": "red",
+      "name": "Sarmiento · Carmensa · Pata Mora",
+      "scope": "interprovincial",
+      "geometry_status": "preliminary_with_gaps"
+    },
+    {
+      "id": "T2",
+      "color": "orange",
+      "name": "Malargüe · Pata Mora · Potasio Río Colorado",
+      "geometry_status": "approximate_with_gap"
+    },
+    {
+      "id": "T3",
+      "color": "blue",
+      "name": "Lencinas · Monte Comán · Bardas Blancas",
+      "geometry_status": "reference_segments_pending_review"
+    }
+  ],
+  "initial_snapshot": {
+    "date": "2026-10-19",
+    "source_placemarks": 6744,
+    "selected_segments": 11,
+    "parcel_input_status": "public_wfs_bounded_query_verified",
+    "elevation_status": "one_real_copernicus_sample_verified",
+    "engineering_and_logistics_status": "inputs_pending",
+    "deployment_status": "vercel_connector_forbidden_scope_idecam",
+    "gates": {
+      "G0": "passed_with_limits",
+      "G1": "in_progress",
+      "G2": "in_progress",
+      "G3": "pending",
+      "G4": "passed_with_limits",
+      "G5": "blocked"
+    }
+  },
+  "coordination": "Coordinador IA como PM e integrador; tareas por especialidad, un editor por archivo y QA independiente. Perfiles IA de apoyo al responsable profesional.",
+  "roles": [
+    {
+      "id": "PM",
+      "name": "Coordinación y gobernanza",
+      "scope": "Alcance, dependencias, contratos de datos e integración",
+      "status": "active",
+      "deliverable": "Plan, registro de decisiones y versión integrada",
+      "evidence": "Trabajo real de coordinación, integración y gobernanza en este arranque."
+    },
+    {
+      "id": "INV",
+      "name": "Investigación y fuentes",
+      "scope": "Fuentes KML/PDF y antecedentes oficiales",
+      "status": "planned",
+      "deliverable": "Inventario trazable, contradicciones y consultas pendientes"
+    },
+    {
+      "id": "TOPO",
+      "name": "Topografía, geodesia y MDE",
+      "scope": "CRS, topología, terreno, perfiles y pendientes",
+      "status": "reviewed",
+      "deliverable": "Revisión de ejes, distorsión, metadatos y cobertura de elevación",
+      "evidence": "Revisión real documentada en docs/REVISION_GIS.md: selección, gaps, áreas elipsoidales y distorsión muestreada; no valida ingeniería ni perfiles de elevación."
+    },
+    {
+      "id": "CAT",
+      "name": "GIS y catastro",
+      "scope": "WFS público IDECAM, corredor ±100 m, NC, cobertura e intersecciones",
+      "status": "reviewed",
+      "deliverable": "Consulta paginada trazable, controles de completitud/truncamiento y pipeline parcelario; snapshot local opcional",
+      "evidence": "Subagente real parcelas_pipeline asignado; fuente principal pública indicada. Acceso, capas/campos y titularidad aún por verificar."
+    },
+    {
+      "id": "FER",
+      "name": "Ingeniería ferroviaria",
+      "scope": "Ramales, geometría, estado de infraestructura y obras",
+      "status": "planned",
+      "deliverable": "Restricciones ferroviarias y necesidades de estudio"
+    },
+    {
+      "id": "MIN",
+      "name": "Minería",
+      "scope": "Nodos, productos, fases y escenarios de producción",
+      "status": "planned",
+      "deliverable": "Inventario de nodos y demanda documentada o supuesta"
+    },
+    {
+      "id": "LOG",
+      "name": "Logística e intermodalidad",
+      "scope": "Servicio, origen/destino, terminales y conectividad",
+      "status": "planned",
+      "deliverable": "Escenarios comparables y vacíos de conectividad"
+    },
+    {
+      "id": "PRED",
+      "name": "Gestión predial y expropiaciones",
+      "scope": "Documentación de derechos, intersecciones y jurisdicción",
+      "status": "planned",
+      "deliverable": "Matriz de expedientes a revisar; sin dictamen ni trámite automático"
+    },
+    {
+      "id": "GEO",
+      "name": "Geología y geotecnia",
+      "scope": "Condicionantes del terreno y programa de investigación",
+      "status": "planned",
+      "deliverable": "Sectores a investigar y evidencia disponible"
+    },
+    {
+      "id": "HID",
+      "name": "Hidrología y cruces",
+      "scope": "Drenajes, cauces, obras y antecedentes",
+      "status": "planned",
+      "deliverable": "Cruces candidatos y prioridades de estudio"
+    },
+    {
+      "id": "ECO",
+      "name": "Economía y evaluación",
+      "scope": "Costos con fuente, escenarios y sensibilidad",
+      "status": "planned",
+      "deliverable": "Comparación sustentada sin ranking automático"
+    },
+    {
+      "id": "DEV",
+      "name": "Arquitectura y desarrollo",
+      "scope": "Pipeline reproducible, contratos y visor web",
+      "status": "active",
+      "deliverable": "App, integración de datos y build verificable",
+      "evidence": "Coordinador principal implementa e integra el frontend y los datos."
+    },
+    {
+      "id": "UX",
+      "name": "Experiencia y cartografía",
+      "scope": "Mapa, dashboard, perfiles y uso móvil",
+      "status": "planned",
+      "deliverable": "Revisión especializada de experiencia y accesibilidad"
+    },
+    {
+      "id": "QA",
+      "name": "Auditoría independiente",
+      "scope": "Datos y aplicación; revisión distinta del autor",
+      "status": "reviewed",
+      "deliverable": "Informe de pruebas, defectos y gates con alcance",
+      "evidence": "Subagente real qa_aplicacion asignado. No se declara aprobación anticipada."
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0",
+      "name": "Fuentes, ejes y topología",
+      "status": "passed_with_limits",
+      "reason": "Ejes y superficies revisados; T1/T2 conservan huecos y T2 es aproximada. Distorsión AEQD muestreada documentada."
+    },
+    {
+      "id": "G1",
+      "name": "Terreno y geodesia",
+      "status": "in_progress",
+      "reason": "Una cota Copernicus y lectura de bloque verificadas; falta validación integral de perfiles y terreno."
+    },
+    {
+      "id": "G2",
+      "name": "Parcelas y cobertura",
+      "status": "in_progress",
+      "reason": "WFS público y cruce acotado reales comprobados. No hay cobertura integral ni nombre del titular en el esquema."
+    },
+    {
+      "id": "G3",
+      "name": "Ingeniería, minería y logística",
+      "status": "pending",
+      "reason": "Faltan estado de vías, demanda, servicio comparable, condicionantes y costos."
+    },
+    {
+      "id": "G4",
+      "name": "Implementación y experiencia",
+      "status": "passed_with_limits",
+      "reason": "Build y pruebas GIS, aplicación y contratos aprobados. Sin comprobación visual en navegador o móvil."
+    },
+    {
+      "id": "G5",
+      "name": "Publicación y comunicación",
+      "status": "blocked",
+      "reason": "Código preparado para Vercel. La conexión disponible devuelve 403 en el equipo IDECAM; despliegue remoto no verificado."
+    }
+  ],
+  "parcel_source": {
+    "primary_type": "public_wfs",
+    "name": "IDECAM · WFS público",
+    "endpoint": "https://geonode-cam.marketsis.com.ar/geoserver/wfs",
+    "access_status": "catalog_schema_and_bounded_query_verified",
+    "wfs_version": null,
+    "layer": null,
+    "fields": null,
+    "holder_field": null,
+    "holder_availability": "not_verified",
+    "last_verified_query_at": null,
+    "query_complete": null,
+    "truncated": null,
+    "optional_local_import_for_reproducibility": true,
+    "required_query_metadata": [
+      "endpoint",
+      "wfs_version",
+      "layer",
+      "fields",
+      "field_mapping",
+      "queried_at",
+      "source_date_if_available",
+      "crs",
+      "spatial_filter",
+      "pagination",
+      "number_matched",
+      "number_returned",
+      "unique_feature_count",
+      "completeness",
+      "truncated",
+      "coverage_status",
+      "response_or_snapshot_hash"
+    ],
+    "completeness_states": [
+      "complete",
+      "partial",
+      "truncated",
+      "error",
+      "unknown"
+    ],
+    "error_means_outside": false,
+    "empty_is_zero_only_if_complete_and_coverage_verified": true,
+    "nc_field": "NOMENCLATU",
+    "owner_field": null,
+    "owner_available": false,
+    "source_update_date": "unknown",
+    "verified_layers": [
+      "geonode:a__LGS_GRP_oct_GENERAL_ALVEAR",
+      "geonode:a__LGS_GRP_oct_LA_PAZ",
+      "geonode:a__LGS_GRP_oct_MALARGUE",
+      "geonode:a__LGS_GRP_oct_SANTA_ROSA",
+      "geonode:a__LGS_GRP_oct_SAN_RAFAEL"
+    ]
+  }
+}

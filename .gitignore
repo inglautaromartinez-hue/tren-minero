@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.vercel/
+.env*
+data/raw/
+data/private/
+*.gpkg
+*.tif
+*.tiff
+__pycache__/

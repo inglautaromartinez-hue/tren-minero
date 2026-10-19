@@ -1,0 +1,17 @@
+import clipping from 'polygon-clipping';
+import geodesic from 'geographiclib-geodesic';
+function ringArea(coords){const p=geodesic.Geodesic.WGS84.Polygon(false);for(const [x,y] of coords)p.AddPoint(y,x);return Math.abs(p.Compute(false,true).area);}
+export function areaWGS84(multi){return multi.reduce((s,poly)=>s+Math.max(0,ringArea(poly[0])-poly.slice(1).reduce((a,r)=>a+ringArea(r),0)),0);}
+const multi=g=>g.type==='Polygon'?[g.coordinates]:g.type==='MultiPolygon'?g.coordinates:null;
+function bounds(m){const b=[Infinity,Infinity,-Infinity,-Infinity];for(const p of m)for(const r of p)for(const [x,y] of r){b[0]=Math.min(b[0],x);b[1]=Math.min(b[1],y);b[2]=Math.max(b[2],x);b[3]=Math.max(b[3],y);}return b;}
+const overlap=(a,b)=>a[0]<=b[2]&&a[2]>=b[0]&&a[1]<=b[3]&&a[3]>=b[1];
+export function intersectCandidates(candidates,corridors,onProgress=()=>{}){
+ const grouped=new Map(),warnings=[];
+ for(const f of candidates.features){const nc=f.properties.nc;if(!grouped.has(nc))grouped.set(nc,{parts:[],layers:new Set(),padron:f.properties.PADRON||'',department:f.properties.DEPARTAMEN||''});const group=grouped.get(nc),m=multi(f.geometry);if(!m)throw Error('El WFS devolvió una geometría no poligonal.');group.parts.push(m);group.layers.add(f.properties.source_layer);}
+ const features=[],unions={},metadata={...candidates.metadata,analysis:'intersección numérica de polígonos en longitud/latitud; áreas elipsoidales WGS84',analysis_geometry:'corredor íntegro sin simplificar',official_coverage_confirmed:false,owner_available:false,routes:{},warnings};
+ const byRoute=new Map();for(const f of corridors.features){const id=f.properties.route_id,shape=multi(f.geometry);if(!['T1','T2','T3'].includes(id)||!shape)throw Error('Corredor de análisis inválido');byRoute.set(id,byRoute.has(id)?clipping.union(byRoute.get(id),shape):shape);}const cs=[...byRoute].map(([id,shape])=>({id,shape,bbox:bounds(shape)}));let done=0;
+ for(const [nc,group] of grouped){try{let parcel=group.parts[0];for(let i=1;i<group.parts.length;i++)parcel=clipping.union(parcel,group.parts[i]);const parcelArea=areaWGS84(parcel);if(!(parcelArea>0))throw Error('Geometría sin superficie positiva');const pb=bounds(parcel);for(const c of cs){if(!overlap(pb,c.bbox))continue;const intersection=clipping.intersection(parcel,c.shape);if(!intersection.length)continue;const area=areaWGS84(intersection);if(!(area>0.01))continue;if(area>parcelArea*1.00001)throw Error('Intersección mayor que la parcela');features.push({type:'Feature',properties:{nc,route_id:c.id,owner:'',owner_status:'not_exposed_by_public_wfs',padron:group.padron,department:group.department,source_layers:[...group.layers],source_date:'unknown',parcel_m2:parcelArea,affected_m2:area,affected_pct:Math.min(100,area/parcelArea*100)},geometry:{type:'MultiPolygon',coordinates:intersection}});unions[c.id]=unions[c.id]?clipping.union(unions[c.id],intersection):intersection;}}catch(error){warnings.push({nc,message:error.message});}onProgress(++done,grouped.size);}
+ for(const id of ['T1','T2','T3']){const fs=features.filter(f=>f.properties.route_id===id);metadata.routes[id]={evaluated:byRoute.has(id),coverage_status:'unknown',query_scope:'candidatas de la extensión consultada; no es totalidad del corredor',parcel_count:byRoute.has(id)?fs.length:null,affected_sum_m2:byRoute.has(id)?fs.reduce((a,f)=>a+f.properties.affected_m2,0):null,covered_union_m2:byRoute.has(id)?(unions[id]?areaWGS84(unions[id]):0):null};}
+ metadata.analysis_complete=warnings.length===0;
+ return{type:'FeatureCollection',features,metadata};
+}
