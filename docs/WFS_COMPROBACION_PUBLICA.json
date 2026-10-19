@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-10-19T14:46:43.950Z",
+  "bbox": [
+    -68.0086,
+    -34.6426,
+    -68.0075,
+    -34.6416
+  ],
+  "layer": [
+    "geonode:a__LGS_GRP_oct_SAN_RAFAEL"
+  ],
+  "candidate_count": 1,
+  "query_complete": true,
+  "intersection_count": 1,
+  "owner_exposed": false,
+  "identifiers_are_strings": true,
+  "routes": {
+    "T1": {
+      "evaluated": true,
+      "coverage_status": "unknown",
+      "query_scope": "candidatas de la extensión consultada; no es totalidad del corredor",
+      "parcel_count": 0,
+      "affected_sum_m2": 0,
+      "covered_union_m2": 0
+    },
+    "T2": {
+      "evaluated": true,
+      "coverage_status": "unknown",
+      "query_scope": "candidatas de la extensión consultada; no es totalidad del corredor",
+      "parcel_count": 0,
+      "affected_sum_m2": 0,
+      "covered_union_m2": 0
+    },
+    "T3": {
+      "evaluated": true,
+      "coverage_status": "unknown",
+      "query_scope": "candidatas de la extensión consultada; no es totalidad del corredor",
+      "parcel_count": 1,
+      "affected_sum_m2": 46177.04001638829,
+      "covered_union_m2": 46177.04001638829
+    }
+  },
+  "warnings": []
+}
