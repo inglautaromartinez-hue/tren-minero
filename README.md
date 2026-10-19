@@ -27,7 +27,7 @@ Visor publicado: https://tren-minero.vercel.app. Actualización LAUGIS integrada
 
 - Tres propuestas y once segmentos seleccionados del KML y los PDF recibidos; ramales ajenos excluidos.
 - Corredores disueltos por propuesta, superficies geodésicas WGS84 y métricas de continuidad.
-- Mapa/satélite y selección de inicio y fin sobre un recorrido continuo. Se conservan los huecos entre segmentos; no se dibujan conexiones inexistentes.
+- Mapa/satélite con vista general por alternativa al tocar su tarjeta o eje. Ajuste opcional de inicio y fin sobre una parte continua y regreso a Traza completa; los huecos se conservan.
 - Paneles longitudinal/transversal/parcelas sobre el mismo tramo. Cursor por mouse, touch, rango o teclado enlazado a un marcador en el mapa; sección elegible en el eje.
 - Consulta **pública** WFS por área visible, cinco capas departamentales, paginación comprobada, máximo 5.000 candidatas y cruce en Web Worker contra el buffer del tramo elegido, sin simplificar ese buffer. Contorno dorado de la geometría parcelaria disponible e intersección verde; tabla y mapa vinculados.
 - NC `NOMENCLATU` conservada como texto. Atributos solicitados: geometría, NC, padrón, departamento y número de plano. Los esquemas revisados no exponen nombre de titular; no se pide ni muestra `CUIT_TITUL`.
@@ -39,12 +39,13 @@ Las consultas WFS se procesan localmente en el navegador. No se guardan respuest
 
 ## Uso del visor
 
-1. Acercarse a una propuesta; tocar el inicio y el fin sobre la misma línea continua. También se puede elegir su recorrido completo.
-2. Abrir la pestaña longitudinal y recorrer el gráfico: su cursor marca la posición sobre la imagen satelital.
-3. En Transversales, mover la posición o tocar «Elegir sección en mapa». Recorrer el perfil perpendicular para ubicar sus puntos.
-4. Acercarse al corredor para cargar parcelas del área visible. La pestaña Parcelas resume NC y superficie observada; tocar una fila acerca y resalta su geometría.
+1. Tocar **Traza 1, 2 o 3**, en la tarjeta o el mapa: se activa la alternativa completa, se aísla visualmente y se abre su análisis general. Los perfiles Copernicus de reconocimiento se preparan previamente a paso de 1 km junto con una sección central de ±100 m. Los puntos sin cota siguen como null.
+2. Recorrer el longitudinal o el transversal para localizar cada punto sobre el satélite. Las discontinuidades del eje se conservan como cortes; no suman longitud ni generan una pendiente entre partes.
+3. Para profundizar, tocar **Ajustar inicio y fin** y marcar dos puntos de la misma parte continua. Se recalculan buffer, perfil, sección y consultas parcelarias para ese recorte.
+4. **Traza completa** recupera el análisis general de la alternativa activa. Las otras tarjetas permiten cambiar de propuesta.
+5. En Parcelas, acercarse al corredor para consultar NC y superficie del área visible. El dashboard de la alternativa se habilita desde el inicio, pero no inventa totales de afectación integral sin consulta/cobertura confirmada. Tocar una fila acerca y resalta la geometría disponible.
 
-El manifiesto distribuido por el build se depura para presentación y no contiene hashes ni configuración interna. La geometría analítica canónica completa se excluye de `dist`; las líneas necesarias para visualizar el mapa siguen siendo accesibles al navegador.
+El manifiesto distribuido por el build se depura para presentación y no contiene hashes ni configuración interna. La geometría analítica canónica completa se excluye de `dist`; las líneas y perfiles necesarios para visualizar el mapa siguen siendo accesibles al navegador.
 
 ## Alternativas y alcance
 

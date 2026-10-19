@@ -34,6 +34,16 @@ function circle(center,radius){
  * Limits deliberately reject huge input before an expensive clipping union.
  */
 export function buildStudyBuffer(feature,radius=100){
+  if(feature?.type==='Feature'&&feature.geometry?.type==='MultiLineString'){
+    const lines=feature.geometry.coordinates;
+    if(!Array.isArray(lines)||!lines.length||lines.some(line=>!Array.isArray(line)))throw TypeError('La traza requiere partes no vacías.');
+    if(lines.reduce((sum,line)=>sum+line.length,0)>MAX_SOURCE_VERTICES)throw RangeError('La traza supera el límite de vértices del análisis interactivo.');
+    const buffers=lines.map(coordinates=>buildStudyBuffer({type:'Feature',properties:feature.properties,geometry:{type:'LineString',coordinates}},radius));
+    const total=buffers.reduce((sum,b)=>sum+b.properties.length_m,0);
+    if(total>MAX_LENGTH_M)throw RangeError('Seleccione una traza de hasta 1000 km para el análisis interactivo.');
+    const coordinates=unionBatches(buffers.map(b=>b.geometry.coordinates));
+    return{type:'Feature',properties:{...buffers[0].properties,length_m:total,area_ha:areaWGS84(coordinates)/10000,part_count:buffers.length,source_vertex_count:buffers.reduce((sum,b)=>sum+b.properties.source_vertex_count,0),strip_count:buffers.reduce((sum,b)=>sum+b.properties.strip_count,0)},geometry:{type:'MultiPolygon',coordinates}};
+  }
   if(feature?.type!=='Feature'||feature.geometry?.type!=='LineString')throw TypeError('Seleccione un tramo LineString válido para generar el corredor.');
   if(!['T1','T2','T3'].includes(feature.properties?.route_id))throw TypeError('El tramo debe pertenecer a T1, T2 o T3.');
   if(!Number.isFinite(radius)||radius<=0||radius>1000)throw RangeError('El radio del corredor debe ser mayor a 0 y hasta 1000 m.');

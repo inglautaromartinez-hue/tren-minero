@@ -10,5 +10,7 @@ const routes=read('routes.geojson');
 for(const f of routes.features){const p=f.properties;f.properties={route_id:p.route_id,segment_id:p.segment_id,name:p.name,color:p.color,length_km:p.length_km,quality:p.quality};}
 write('routes.geojson',routes);
 const corridors=read('corridors.geojson');for(const f of corridors.features)f.properties={route_id:f.properties.route_id,color:f.properties.color};write('corridors.geojson',corridors);
+const overview=read('overviews.json');
+write('overviews.json',{schema_version:overview.schema_version,model:overview.model,step_m:overview.step_m,generated_at:overview.generated_at,routes:Object.fromEntries(Object.entries(overview.routes).map(([id,r])=>[id,{profile:r.profile,cross:r.cross,length_m:r.length_m,parts:r.parts,status:r.status,valid_samples:r.valid_samples,missing_samples:r.missing_samples}]))});
 fs.rmSync(new URL('corridors-analysis.geojson',root),{force:true});
 console.log('Presentación pública preparada: sin configuración interna, hashes ni corredor analítico descargable.');
