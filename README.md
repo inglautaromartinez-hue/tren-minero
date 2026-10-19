@@ -29,23 +29,24 @@ Visor publicado: https://tren-minero.vercel.app. Actualización LAUGIS integrada
 - Corredores disueltos por propuesta, superficies geodésicas WGS84 y métricas de continuidad.
 - Mapa/satélite con vista general por alternativa al tocar su tarjeta o eje. Ajuste opcional de inicio y fin sobre una parte continua y regreso a Traza completa; los huecos se conservan.
 - Paneles longitudinal/transversal/parcelas sobre el mismo tramo. Cursor por mouse, touch, rango o teclado enlazado a un marcador en el mapa; sección elegible en el eje.
-- Consulta **pública** WFS por área visible, cinco capas departamentales, paginación comprobada, máximo 5.000 candidatas y cruce en Web Worker contra el buffer del tramo elegido, sin simplificar ese buffer. Contorno dorado de la geometría parcelaria disponible e intersección verde; tabla y mapa vinculados.
+- Análisis parcelario precensado de cada alternativa sobre cinco capas públicas de IDECAM, con consultas acotadas al corredor y controles de completitud. Intersección interactiva en Web Worker sin depender del zoom; detalle WFS visible opcional y totales generales conservados. Contornos dorados de contexto, intersección verde y tabla vinculados por NC.
 - NC `NOMENCLATU` conservada como texto. Atributos solicitados: geometría, NC, padrón, departamento y número de plano. Los esquemas revisados no exponen nombre de titular; no se pide ni muestra `CUIT_TITUL`.
-- Dashboard y tabla con cobertura explícita. Las cantidades detectadas pertenecen al área consultada, con cobertura integral sin confirmar. Fallo o faltante nunca equivale a cero o a no afectación.
+- Dashboard y tabla con cobertura explícita. Las cantidades corresponden al corredor y al alcance de las capas consultadas; la cobertura oficial sigue sin confirmar. Fallo o faltante nunca equivale a cero o a no afectación.
 - Perfiles longitudinales y transversales ±100 m, pendientes del terreno en ‰ y NoData explícito. Copernicus GLO-30 Public, distribución AWS 2021, alturas EGM2008; no es rasante ni levantamiento de proyecto.
 - La organización del equipo y sus controles se conserva en archivos internos; `config/project.json` no es contenido de la aplicación pública.
 
-Las consultas WFS se procesan localmente en el navegador. No se guardan respuestas catastrales, titulares ni CUIT en el repositorio. Una fuente públicamente accesible no acredita por sí misma titularidad registral ni permiso irrestricto de redistribución.
+El censo de consultas WFS se prepara mediante el script reproducible; el recorte interactivo y las consultas de detalle se procesan en el navegador. No se guardan respuestas catastrales, titulares ni CUIT en el repositorio. Una fuente públicamente accesible no acredita por sí misma titularidad registral ni permiso irrestricto de redistribución.
 
 ## Uso del visor
 
-1. Tocar **Traza 1, 2 o 3**, en la tarjeta o el mapa: se activa la alternativa completa, se aísla visualmente y se abre su análisis general. Los perfiles Copernicus de reconocimiento se preparan previamente a paso de 1 km junto con una sección central de ±100 m. Los puntos sin cota siguen como null.
-2. Recorrer el longitudinal o el transversal para localizar cada punto sobre el satélite. Las discontinuidades del eje se conservan como cortes; no suman longitud ni generan una pendiente entre partes.
-3. Para profundizar, tocar **Ajustar inicio y fin** y marcar dos puntos de la misma parte continua. Se recalculan buffer, perfil, sección y consultas parcelarias para ese recorte.
-4. **Traza completa** recupera el análisis general de la alternativa activa. Las otras tarjetas permiten cambiar de propuesta.
-5. En Parcelas, acercarse al corredor para consultar NC y superficie del área visible. El dashboard de la alternativa se habilita desde el inicio, pero no inventa totales de afectación integral sin consulta/cobertura confirmada. Tocar una fila acerca y resalta la geometría disponible.
+1. Tocar **Traza 1, 2 o 3**: se activa la alternativa completa, se aísla visualmente y se abre el análisis parcelario. Se muestran NC identificadas y superficie cubierta por parcelas del WFS público **IDECAM**, citado con enlace como fuente. La cobertura oficial y la fecha de actualización catastral no se presumen.
+2. El análisis general se carga desde un derivado de consultas reales a lo largo del corredor, sin exigir zoom o una extensión pequeña. El dorado dibuja el contorno de contexto de las parcelas alcanzadas y el verde su intersección de ±100 m. Los contornos precargados están generalizados a 2 m y son sólo visuales; no intervienen en superficies ni porcentajes.
+3. Para profundizar, tocar **Ajustar inicio y fin** y marcar dos puntos de la misma parte continua. El cruce se recalcula contra ese buffer de 100 m usando intersecciones de apoyo de 125 m y conservando el denominador geométrico parcelario original disponible.
+4. **Traza completa** recupera el análisis general. Las otras tarjetas cambian de propuesta. Acercar y consultar el WFS sirve para actualizar el detalle visible y no reemplaza el total analizado por un subconjunto local.
+5. Los longitudinales generales tienen cotas Copernicus precalculadas a paso de 1 km. En **Transversales**, hay secciones fijas cada **100 m de eje**, más extremos, de ±100 m y nueve cotas. Se seleccionan por marca del mapa, flechas anterior/siguiente o rango discreto. No se consulta un perfil arbitrario ni se inventan elevaciones al tocar el mapa. Acercarse permite ver todas las marcas dentro de la vista; a escala regional se evita dibujar miles de símbolos superpuestos.
+6. Al recorrer un perfil, su cursor marca la posición sobre el satélite. Las discontinuidades se conservan como cortes. Los recortes que no incluyen ninguna sección prefijada lo indican expresamente.
 
-El manifiesto distribuido por el build se depura para presentación y no contiene hashes ni configuración interna. La geometría analítica canónica completa se excluye de `dist`; las líneas y perfiles necesarios para visualizar el mapa siguen siendo accesibles al navegador.
+El manifiesto y los assets se depuran para presentación y no contienen configuración de agentes. No se ofrecen exportaciones. El repositorio sigue público; los datos necesarios para representar el mapa y los perfiles llegan al navegador y esa visualización no acredita confidencialidad. Las respuestas WFS originales, las geometrías fuente completas y checkpoints se conservan fuera del código publicado, en `data/private` excluido de Git. Los derivados de presentación contienen NC y geometría analítica limitada al soporte, junto con contornos generalizados sólo visuales; no se publica titular ni CUIT.
 
 ## Alternativas y alcance
 
