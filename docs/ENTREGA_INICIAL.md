@@ -4,7 +4,7 @@
 
 Visor Vite/Leaflet con 3 propuestas, 11 tramos, buffer ±100 m, dashboard, comparación, perfiles bajo demanda, consulta WFS pública por área y vista de equipo con 14 perfiles. El procesamiento de intersecciones ocurre en un Web Worker. La pasarela DEM es una función Node limitada a teselas/rangos del COG público.
 
-El código se organiza en una rama y PR. Una integración en GitHub no equivale a despliegue verificado. La conexión Vercel respondió 403 para IDECAM y no hay credencial CLI disponible: el gate de publicación permanece bloqueado hasta comprobar el despliegue.
+El código se organiza en una rama y PR. Una integración en GitHub no equivale a despliegue verificado. La conexión directa Vercel respondió403 para IDECAM y no hay credencial CLI disponible. La integración GitHub/Vercel sí construyó la rama y `main` en estado Ready. Producción https://tren-minero.vercel.app responde HTTP200 con título y manifiesto correctos, commit de integración3336452. El gate de publicación se acepta con limitaciones; interacción visual pendiente.
 
 ## Asignaciones ejecutadas realmente
 
@@ -27,7 +27,8 @@ Minería, logística, ferroviaria, gestión predial, geología, hidrología y ec
 - Muestra real acotada: `docs/WFS_COMPROBACION_PUBLICA.json`. Una candidata y una intersección azul; no es el conteo total del recorrido.
 - Contraste del mismo sector: cliente web numérico 46.177,040016 m²; pipeline Python 46.177,040015 m². Es una comprobación de un caso, no validación exhaustiva del parcelario o del método.
 - Copernicus real: en longitud −68,008055 / latitud −34,642143 la lectura del píxel produjo 551,545898 m; lectura de la función DEM en proceso Node devolvió HTTP206 y bytes0–2047 coherentes. No acredita precisión altimétrica de campo ni despliegue de la función.
-- Navegador, interacción de Web Worker en navegador, móvil, mapa base y función desplegada: **NOT_RUN**. No se afirma revisión visual o extremo a extremo del sitio publicado.
+- Función DEM en producción: HTTP206, Content-Range bytes0–2047/38176492 y cuerpo TIFF de2048bytes comprobados.
+- Navegador, interacción de Web Worker en navegador, móvil, mapa base: **NOT_RUN**. La función desplegada se comprueba por HTTP por separado, sin afirmar interacción de navegador. No se afirma revisión visual o extremo a extremo del sitio publicado.
 
 ## Hallazgos importantes resueltos
 
@@ -47,4 +48,4 @@ Minería, logística, ferroviaria, gestión predial, geología, hidrología y ec
 - Para nombres de titulares, obtener una fuente pertinente y condiciones de acceso/uso; no inferirlos de CUIT ni de geometría.
 - Contrastar elevaciones y restricciones ferroviarias con datos de mayor detalle, infraestructura y terreno.
 - Definir escenarios de servicio, nodos/demanda minera, restricciones, obras, costos con fuente y criterios de comparación.
-- Comprobar interfaz en escritorio/móvil y URL/commit desplegados en Vercel.
+- Comprobar interfaz e interacción completa en escritorio/móvil; URL, título, manifiesto y estado Ready ya comprobados por HTTP/GitHub.

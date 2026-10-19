@@ -13,7 +13,7 @@ npm run build
 
 El mapa y el WFS funcionan en Vite. Los perfiles usan `/api/dem` (función Node de Vercel que lee bloques del COG público); para probar esa ruta localmente usar `vercel dev` con la conexión propia del desarrollador. Un `vite dev` solo no sirve las funciones `/api`.
 
-Proyecto Vercel previsto: https://vercel.com/idecam/tren-minero. `vercel.json` define Vite y `dist`. La conexión disponible devolvió 403 para IDECAM; no se declara un despliegue verificado hasta comprobar URL y commit.
+Proyecto Vercel previsto: https://vercel.com/idecam/tren-minero. `vercel.json` define Vite y `dist`. Visor publicado: https://tren-minero.vercel.app. GitHub/Vercel informó Ready para el commit de integración `3336452`; se comprobó HTTP200, título y manifiesto correctos. La conexión directa Vercel devuelve403, pero el despliegue Git funciona. La verificación visual e interacción en navegador siguen pendientes.
 
 ## Funciones
 
