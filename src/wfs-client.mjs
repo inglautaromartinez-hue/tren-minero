@@ -37,7 +37,7 @@ async function requestPage(url,fetchImpl,signal){
 }
 
 export async function queryWfs({layers,bbox,signal,onProgress=()=>{},fetchImpl=globalThis.fetch,maxFeatures=5000,endpoint=WFS_ENDPOINT}={}){
-  if(endpoint!==WFS_ENDPOINT)fail('Sólo está habilitado el servicio WFS público de IDECAM.');
+  if(endpoint!==WFS_ENDPOINT)fail('Sólo está habilitado el servicio parcelario público configurado.');
   if(!Array.isArray(layers)||!layers.length||new Set(layers).size!==layers.length||layers.some(layer=>!ALLOWED_WFS_LAYERS.includes(layer)))fail('Seleccioná capas parcelarias habilitadas y sin repetir.');
   if(!validBbox(bbox))fail('La consulta necesita bbox WGS84 [oeste, sur, este, norte].');
   if(!Number.isInteger(maxFeatures)||maxFeatures<1||maxFeatures>5000)fail('El límite de consulta debe estar entre 1 y 5.000 entidades.');

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project_id": "tren-minero",
-  "title": "Tren Minero · Evaluación territorial de alternativas",
+  "title": "LAUGIS · Tren Minero",
   "director": "Ing. Agrim. LAUTARO DARIO MARTINEZ",
   "stage": "preliminary",
   "repository": "https://github.com/inglautaromartinez-hue/tren-minero",
@@ -43,7 +43,10 @@
       "WARN",
       "BLOCKED",
       "NOT_RUN"
-    ]
+    ],
+    "audience": "internal",
+    "import_into_frontend": false,
+    "show_team_in_public_viewer": false
   },
   "analysis": {
     "buffer_each_side_m": 100,
@@ -73,7 +76,13 @@
     "parcel_identifiers_are_strings": true,
     "commit_raw_parcel_dataset": false,
     "commit_dem_mosaics": false,
-    "commit_secrets": false
+    "commit_secrets": false,
+    "repository_visibility_last_verified": "public",
+    "repository_private_conversion_requested": true,
+    "repository_private_conversion_status": "pending_execution_capability",
+    "hide_internal_organization_in_viewer": true,
+    "hiding_ui_implies_repository_privacy": false,
+    "confidentiality_guaranteed": false
   },
   "alternatives": [
     {
@@ -312,5 +321,29 @@
       "geonode:a__LGS_GRP_oct_SAN_RAFAEL"
     ]
   },
-  "public_url": "https://tren-minero.vercel.app"
+  "public_url": "https://tren-minero.vercel.app",
+  "brand": "LAUGIS",
+  "ownership": {
+    "type": "personal_project",
+    "owner": "Ing. Agrim. LAUTARO DARIO MARTINEZ",
+    "institutional_project": false,
+    "external_data_source_is_project_owner": false,
+    "infrastructure_account_slug_is_project_owner": false
+  },
+  "presentation": {
+    "brand": "LAUGIS",
+    "project_name": "Tren Minero",
+    "professional_name": "Ing. Agrim. LAUTARO DARIO MARTINEZ",
+    "show_team": false,
+    "show_internal_gates": false,
+    "show_internal_methodology": false,
+    "show_repository_links": false,
+    "show_internal_document_links": false,
+    "show_downloads_or_exports": false,
+    "show_source_hashes": false,
+    "show_execution_details": false,
+    "institutional_branding": false,
+    "keep_user_facing_result_limitations": true,
+    "configuration_audience": "internal_not_for_frontend_import"
+  }
 }

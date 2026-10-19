@@ -1,8 +1,12 @@
-# Equipo, interfaces y controles
+# LAUGIS · Equipo, interfaces y controles internos
 
 ## Dirección y funcionamiento
 
-**Director y responsable del proyecto:** Ing. Agrim. LAUTARO DARIO MARTINEZ.
+**Proyecto personal:** LAUGIS · Tren Minero. **Director y responsable:** Ing. Agrim. LAUTARO DARIO MARTINEZ. La procedencia externa de una fuente técnica o el nombre de una cuenta de infraestructura no implica autoría o aval institucional.
+
+Este documento y el equipo/gates configurados son de uso interno. No se presentan en el visor ni se importan como contenido del frontend. El visor tampoco enlaza al repositorio o estas instrucciones ni ofrece descargas/exportaciones. Las advertencias útiles sobre cobertura e incertidumbre sí acompañan los resultados.
+
+El repositorio continúa público en el estado comprobado por el coordinador; ocultar organización interna en la interfaz no protege por sí solo los archivos del repositorio. El cambio de visibilidad solicitado está pendiente de capacidad de ejecución; no se da por completado ni se promete confidencialidad.
 
 El coordinador IA funciona como PM: transforma el objetivo en tareas, entrega insumos versionados, asigna un editor por archivo, integra resultados y comunica decisiones y faltantes. La estructura adapta el trabajo por especialidades, revisión cruzada y gates utilizado como referencia en Plan El Niño. Los especialistas aquí son perfiles de trabajo de IA; su existencia en el repositorio no significa que estén activos ni que sustituyan a profesionales habilitados.
 

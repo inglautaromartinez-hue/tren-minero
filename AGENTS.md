@@ -1,6 +1,12 @@
-# Tren Minero · instrucciones de trabajo
+# LAUGIS · Tren Minero · instrucciones internas de trabajo
 
-Este repositorio contiene una evaluación territorial preliminar y su visor. Responsable del proyecto: **Ing. Agrim. LAUTARO DARIO MARTINEZ**. Las tareas de IA apoyan al responsable: no constituyen acreditaciones profesionales, dictámenes legales ni aprobación de un proyecto ferroviario.
+Este repositorio contiene un **proyecto personal de LAUGIS**, su evaluación territorial preliminar y su visor. Responsable: **Ing. Agrim. LAUTARO DARIO MARTINEZ**. No atribuir autoría, aval, dirección ni pertenencia institucional al Colegio de Agrimensura de Mendoza o a IDECAM. El WFS seleccionado conserva su identidad como fuente técnica externa; usarlo no cambia la autoría personal del proyecto. Las tareas de IA apoyan al responsable: no constituyen acreditaciones profesionales, dictámenes legales ni aprobación de un proyecto ferroviario.
+
+## Presentación pública y organización interna
+
+Equipo de agentes, gates, instrucciones, planes, decisiones, reportes de revisión y `config/project.json` son **organización interna de trabajo**. No importarlos al frontend, empaquetarlos como contenido de la app ni ofrecer una vista Equipo. El visor no ofrece botones de descarga/exportación, enlaces al repositorio o documentación interna, hashes de archivos, detalles de ejecución ni marcas institucionales ajenas. Mantener en la interfaz las limitaciones necesarias para interpretar correctamente el resultado, expresadas en lenguaje de usuario.
+
+La retirada de esas vistas o enlaces no convierte un repositorio público en privado ni impide inspeccionar los datos necesarios para mostrar el mapa. A fecha de esta actualización, el repositorio es **público**; el cambio solicitado a privado está pendiente de una capacidad que permita ejecutarlo. No afirmar confidencialidad garantizada ni registrar ese cambio como realizado sin evidencia. La autorización para aplicar privacidad ya está dada; no repetir el pedido de permiso.
 
 ## Equipo obligatorio
 
