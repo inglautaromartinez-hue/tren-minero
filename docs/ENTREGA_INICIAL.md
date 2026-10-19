@@ -49,3 +49,13 @@ Minería, logística, ferroviaria, gestión predial, geología, hidrología y ec
 - Contrastar elevaciones y restricciones ferroviarias con datos de mayor detalle, infraestructura y terreno.
 - Definir escenarios de servicio, nodos/demanda minera, restricciones, obras, costos con fuente y criterios de comparación.
 - Comprobar interfaz e interacción completa en escritorio/móvil; URL, título, manifiesto y estado Ready ya comprobados por HTTP/GitHub.
+
+## Actualización LAUGIS y selección vinculada · 19/10/2026
+
+El PM integró cuatro subagentes reales: estructura/equipo, pipeline parcelario/buffer, selección/topografía y QA independiente. La estructura se conserva como organización interna y ya no forma parte de la UI. La presentación adopta LAUGIS, retira exportaciones, enlaces internos y hashes; el build sanea manifiesto/propiedades y excluye el corredor analítico canónico de dist. El repositorio continúa público: esa medida no garantiza privacidad ni revoca copias previas.
+
+La nueva UI selecciona inicio y fin en una cadena continua del mapa, resalta su eje y extremos y permite abrir pestañas longitudinal, transversal y parcelaria. Los perfiles enlazan su cursor con un marcador sobre el satélite; la sección transversal puede elegirse sobre el eje. Consulta WFS y superficies se calculan contra el buffer del tramo, con contornos disponibles y afectación diferenciados, y enlace mapa/tabla por NC. Las consultas se limitan al área visible.
+
+Validación final local sobre esta implementación: `npm run build && CHECK_BUILT_PRESENTATION=1 npm test`: **64 PASS, 0 FAIL, 0 omitidas**; `python -m unittest discover -s tests -p 'test_*.py'`: **23 PASS**. Revisión independiente de selección/buffer/perfiles: 23 controles PASS y comparación de dos ejes reales contra Python AEQD, registrada con WARN de no equivalencia exacta en REVISION_SELECCION.md. Revisión de presentación: 8 contratos PASS. Estos conteos se solapan y no se suman como pruebas independientes.
+
+Verificación de interacción visual/móvil en navegador: **NOT_RUN**; no se la presenta como realizada. Publicación de esta actualización: pendiente de comprobación remota al momento de este registro; el resultado se añadirá luego de integrar y consultar producción.

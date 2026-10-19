@@ -1,10 +1,12 @@
-# Plan de trabajo · Tren Minero
+# Plan interno de trabajo · LAUGIS · Tren Minero
 
 ## Objetivo y alcance
 
-Construir una base reproducible y un visor para explorar las tres propuestas, sus corredores de ±100 m, intersecciones parcelarias, relieve y condicionantes. El resultado inicial es una evaluación territorial preliminar. Elegir una solución ferroviaria requiere además definir el servicio logístico y completar ingeniería y estudios especializados.
+Construir, como **proyecto personal LAUGIS**, una base reproducible y un visor para explorar las tres propuestas, sus corredores de ±100 m, intersecciones parcelarias, relieve y condicionantes. No es un proyecto institucional de IDECAM ni del Colegio de Agrimensura de Mendoza. El WFS público conserva su procedencia como fuente técnica externa. El resultado inicial es una evaluación territorial preliminar. Elegir una solución ferroviaria requiere además definir el servicio logístico y completar ingeniería y estudios especializados.
 
 Responsable: **Ing. Agrim. LAUTARO DARIO MARTINEZ**. El equipo y sus controles están en `EQUIPO_Y_CONTROLES.md`; las decisiones metodológicas están en `REGISTRO_DECISIONES.md`.
+
+Equipo, gates, metodología operativa y configuración se mantienen como documentación interna: no se importan a la aplicación ni se enlazan desde el visor. Se retiran vistas de equipo, descargas/exportaciones, enlaces al repo y detalles de ejecución de la presentación pública. El repo sigue público en el estado conocido: cambiarlo a privado está solicitado y pendiente de capacidad, sin presumir que ocultar enlaces garantice privacidad.
 
 ## Itinerarios de referencia
 
@@ -26,7 +28,7 @@ Los PDF y las aclaraciones permiten identificar intención, no un eje de proyect
 | 3 · Parcelas | Descubrir WFS público IDECAM, capas y campos; consultar corredor paginado, comprobar completitud/truncamiento y cobertura; intersección y agregación por parcela única | CAT + PRED; validar respuesta/esquema del servicio | Tablas analíticas, registro endpoint/capa/campos/fecha, cobertura y métricas; snapshot/GPKG opcional para reproducción; G2 |
 | 4 · Restricciones y servicio | Inventariar nodos mineros, vías/estado/trocha, terminales, cruces, condicionantes geológicos/hídricos; definir origen/destino y escenarios de carga | MIN + FER + LOG + GEO + HID; fuentes por completar | Registro de restricciones y escenarios comparables, con evidencia y faltantes; G3 |
 | 5 · Gestión predial y economía | Separar corredor de estudio de derechos a adquirir; matriz de expedientes; costos sólo con bases verificadas; multicriterio y sensibilidad | PRED + ECO + director/asesoría; G2 y escenarios G3 | Análisis de escenarios, sin dictamen expropiatorio automático ni costos inventados |
-| 6 · Visor y entrega | Mapa de alternativas/gaps/corredores, tabla enlazada, dashboard, perfiles sincronizados, procedencia y descargas sanitizadas; responsive | DEV + UX; resultados anteriores | Build/pruebas, revisión independiente y comprobación de URL; G4/G5 |
+| 6 · Visor y entrega | Identidad personal LAUGIS; mapa de alternativas/gaps/corredores, tabla enlazada, dashboard y perfiles sincronizados; responsive; sin equipo, exportaciones, enlaces internos o branding institucional | DEV + UX; resultados anteriores | Build/pruebas, revisión independiente y comprobación de URL; organización interna fuera del frontend; G4/G5 |
 
 ## Estado verificable del arranque (19/10/2026)
 

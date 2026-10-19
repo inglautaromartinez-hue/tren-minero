@@ -1,6 +1,8 @@
-# Registro de decisiones
+# Registro interno de decisiones · LAUGIS · Tren Minero
 
 Fecha de apertura: 2026-10-19. Responsable: **Ing. Agrim. LAUTARO DARIO MARTINEZ**.
+
+Proyecto personal bajo marca **LAUGIS**. Este registro es documentación de trabajo interna; no se importa al frontend ni se enlaza desde el visor. Su presencia en un repositorio actualmente público no equivale a confidencialidad.
 
 Estas decisiones fijan la implementación preliminar; no equivalen a aprobar la ingeniería, el catastro, el método económico o una expropiación. Los cambios de metodología se revisan por un segundo rol y se registran con motivo, evidencia y versión afectada.
 
@@ -37,3 +39,23 @@ El coordinador integra las revisiones de roles distintos y las pruebas registrad
 ## D016 · Publicación mediante integración Git · 19/10/2026
 
 La conexión directa Vercel permanece403, pero el bot Vercel registró Ready para la PR1 y el commit de integración3336452. Producción https://tren-minero.vercel.app comprobada por HTTP200 y manifiesto con el hash original y tres propuestas. Se conserva separación entre disponibilidad HTTP y verificación visual, aún pendiente. La PR1 fue integrada después de las revisiones registradas y el build remoto exitoso.
+
+## D017 · Organización interna y presentación del visor · 19/10/2026
+
+Por instrucción del responsable, equipo de agentes, gates, instrucciones, planes, decisiones, reportes y configuración son organización interna. Se retiran del visor la vista Equipo, importaciones de esa configuración, enlaces al repositorio/documentación, hashes, detalles de ejecución y acciones de descarga/exportación. La interfaz conserva las limitaciones útiles para interpretar el análisis, sin exponer la organización del trabajo. Esta decisión no altera originales, procedencia de fuentes o registros reales de pruebas.
+
+El coordinador comprobó que el repositorio es público. El cambio solicitado a privado sigue pendiente de una capacidad de ejecución; la autorización del usuario ya existe. Ocultar enlaces o secciones de la web no cambia la visibilidad del repositorio ni garantiza que los datos enviados al navegador sean confidenciales. No se afirma privacidad implementada a nivel de repositorio ni eliminación de copias previas.
+
+## D018 · Identidad personal LAUGIS · 19/10/2026
+
+El responsable aclara que **Tren Minero es un proyecto personal**, bajo marca **LAUGIS**, de **Ing. Agrim. LAUTARO DARIO MARTINEZ**. No corresponde presentarlo como proyecto de IDECAM, del Colegio de Agrimensura de Mendoza ni con su dirección o aval institucional. Se actualizan identidad, títulos y presentación pública en ese sentido.
+
+La fuente técnica seleccionada sigue siendo el WFS público IDECAM, con su URL real `https://geonode-cam.marketsis.com.ar/geoserver/wfs`; no se altera ni se oculta su procedencia en los registros internos. También se conservan las URLs reales del repositorio y del proyecto Vercel: el nombre del equipo en una URL de infraestructura no atribuye autoría institucional. La actualización de marca no aprueba la metodología, no cambia los resultados ni reescribe la evidencia histórica de despliegues anteriores.
+
+## D019 · Tramo interactivo y análisis vinculados · 19/10/2026
+
+El usuario solicita seleccionar inicio/fin sobre el mapa y abrir perfiles longitudinales, transversales y dashboard parcelario vinculados a ese tramo. Se adopta una progresiva común GeographicLib WGS84 para snap, recorte, muestreo y secciones. Se agrupan sólo extremos separados hasta 1 m, preservando sus coordenadas; los huecos mayores permanecen en cadenas diferentes y no pueden ser atravesados por una selección.
+
+El buffer de la selección se construye en Web Worker con normales WGS84 ±100 m, franjas subdivididas hasta 500 m, discos de 64 lados y unión de solapes. Su superficie es elipsoidal. El método es exploratorio y difiere del corredor canónico AEQD; no reemplaza los derivados de referencia ni justifica precisión catastral. El rol independiente de topografía revisó dos casos reales, secciones y coherencia de progresivas, sin bloqueantes dentro de ese alcance; sus diferencias y límites están en REVISION_SELECCION.md. Se acepta para interacción preliminar con esas limitaciones.
+
+Los contornos dorados muestran la geometría parcelaria disponible en la consulta visible; el verde identifica su intersección con el buffer elegido. La NC enlaza mapa y tabla. El dashboard informa resultados observados, no cobertura total. Perfiles y resultados de consultas anteriores se cancelan o descartan al cambiar de selección. El cursor funciona por pointer, range y teclado; las coordenadas del SVG se transforman con su matriz de pantalla. El renderizado SVG conserva hit-testing por geometría entre panes superpuestos. QA revisó contratos, carreras y controles por inspección; navegador/touch real sigue NOT_RUN.
