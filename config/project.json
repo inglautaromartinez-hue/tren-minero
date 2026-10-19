@@ -103,15 +103,16 @@
     "parcel_input_status": "public_wfs_bounded_query_verified",
     "elevation_status": "one_real_copernicus_sample_verified",
     "engineering_and_logistics_status": "inputs_pending",
-    "deployment_status": "vercel_connector_forbidden_scope_idecam",
+    "deployment_status": "production_ready_http_verified",
     "gates": {
       "G0": "passed_with_limits",
       "G1": "in_progress",
       "G2": "in_progress",
       "G3": "pending",
       "G4": "passed_with_limits",
-      "G5": "blocked"
-    }
+      "G5": "passed_with_limits"
+    },
+    "production_code_commit": "3336452aa0270d369d7f20d08d8e62fb2e63822a"
   },
   "coordination": "Coordinador IA como PM e integrador; tareas por especialidad, un editor por archivo y QA independiente. Perfiles IA de apoyo al responsable profesional.",
   "roles": [
@@ -253,8 +254,8 @@
     {
       "id": "G5",
       "name": "Publicación y comunicación",
-      "status": "blocked",
-      "reason": "Código preparado para Vercel. La conexión disponible devuelve 403 en el equipo IDECAM; despliegue remoto no verificado."
+      "status": "passed_with_limits",
+      "reason": "Producción Ready; HTTP200 con título y manifiesto correctos; pasarela DEM desplegada verificada HTTP206. Conexión directa Vercel403; navegador y móvil pendientes."
     }
   ],
   "parcel_source": {
@@ -310,5 +311,6 @@
       "geonode:a__LGS_GRP_oct_SANTA_ROSA",
       "geonode:a__LGS_GRP_oct_SAN_RAFAEL"
     ]
-  }
+  },
+  "public_url": "https://tren-minero.vercel.app"
 }

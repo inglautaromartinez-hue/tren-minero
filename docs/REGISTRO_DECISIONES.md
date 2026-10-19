@@ -33,3 +33,7 @@ Instrucción expresa del director: usar el WFS público IDECAM como fuente parce
 ## D015 · Aceptación del código preliminar y límites de publicación · 19/10/2026
 
 El coordinador integra las revisiones de roles distintos y las pruebas registradas en ENTREGA_INICIAL.md. Se acepta preparar e integrar esta versión preliminar por PR: no aprueba viabilidad, titularidad, expropiación, calidad de campo ni el óptimo ferroviario. Las limitaciones de fuentes y los enlaces faltantes quedan visibles. Vercel devuelve 403 con la conexión disponible; no se declara publicación verificada.
+
+## D016 · Publicación mediante integración Git · 19/10/2026
+
+La conexión directa Vercel permanece403, pero el bot Vercel registró Ready para la PR1 y el commit de integración3336452. Producción https://tren-minero.vercel.app comprobada por HTTP200 y manifiesto con el hash original y tres propuestas. Se conserva separación entre disponibilidad HTTP y verificación visual, aún pendiente. La PR1 fue integrada después de las revisiones registradas y el build remoto exitoso.
